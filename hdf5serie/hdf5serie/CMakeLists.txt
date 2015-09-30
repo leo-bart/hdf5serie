@@ -13,7 +13,7 @@ add_library(hdf5serie SHARED
     vectorserie.cc)
     
 SET_TARGET_PROPERTIES(hdf5serie PROPERTIES COMPILE_FLAGS "${FMATVEC_CFLAGS_STR}")
-target_link_libraries(hdf5serie ${FMATVEC_LDFLAGS} rt)
+target_link_libraries(hdf5serie ${FMATVEC_LDFLAGS} ${LIBS})
 
 # Create a config.h due to the checks made before
 configure_file ("${PROJECT_SOURCE_DIR}/hdf5serie/config.h.in"
