@@ -1,8 +1,8 @@
-prefix=@prefix@
-exec_prefix=@exec_prefix@
-libdir=@libdir@
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
 bindir=@bindir@
-includedir=@includedir@
 datadir=@datadir@
 PACKAGE_TARNAME=@PACKAGE_TARNAME@
 docdir=@docdir@
@@ -14,6 +14,6 @@ hdf5_prefix=@hdf5_prefix@
 Name: hdf5serie
 Description: A c++ wrapper for HDF5 to write data series
 Requires: fmatvec
-Version: @VERSION@
-Libs: -L${libdir} -lhdf5serie @HDF5LDFLAGS@ @LIBS@ -l@BOOST_SYSTEM_LIB@ -l@BOOST_FILESYSTEM_LIB@
+Version: @hdf5serie_VERSION@
+Libs: -L${libdir} -lhdf5serie @HDF5_INCLUDE_DIRS@ @LIBS@ @Boost_SYSTEM_LIBRARY@ @Boost_FILESYSTEM_LIBRARY@ -lhdf5 -lhdf5_cpp -lrt 
 Cflags: -I${includedir} @HDF5CPPFLAGS@

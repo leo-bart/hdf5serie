@@ -42,7 +42,7 @@ hid_t returnVarLenStrDatatypeID() {
   hid_t toH5Type(const CTYPE& dummy) { \
     return H5TYPE; \
   }
-# include "hdf5serie/knowntypes.def"
+# include "knowntypes.def"
 # undef FOREACHKNOWNTYPE
 
 }

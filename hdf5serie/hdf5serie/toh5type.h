@@ -88,7 +88,7 @@ hid_t returnVarLenStrDatatypeID();
 
 # define FOREACHKNOWNTYPE(CTYPE, H5TYPE) \
   hid_t toH5Type(const CTYPE& dummy);
-# include "hdf5serie/knowntypes.def"
+# include "knowntypes.def"
 # undef FOREACHKNOWNTYPE
 
 }

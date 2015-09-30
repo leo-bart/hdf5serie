@@ -20,11 +20,11 @@
  */
 
 #include <config.h>
-#include <hdf5serie/interface.h>
-#include <hdf5serie/group.h>
-#include <hdf5serie/file.h>
-#include <hdf5serie/simpleattribute.h>
-#include <hdf5serie/toh5type.h>
+#include "interface.h"
+#include "group.h"
+#include "file.h"
+#include "simpleattribute.h"
+#include "toh5type.h"
 #include <sstream>
 
 using namespace std;
@@ -108,7 +108,7 @@ Attribute *Object::openChildAttribute(const std::string &name_, ElementType *att
 #     define FOREACHKNOWNTYPE(CTYPE, H5TYPE) \
       if(H5Tequal(ntd, H5TYPE)) \
         return openChildAttribute<SimpleAttribute<CTYPE> >(name_);
-#     include "hdf5serie/knowntypes.def"
+#     include "knowntypes.def"
 #     undef FOREACHKNOWNTYPE
       throw Exception(getPath(), "unknown type of dataset");
     case 1:
@@ -117,7 +117,7 @@ Attribute *Object::openChildAttribute(const std::string &name_, ElementType *att
 #       define FOREACHKNOWNTYPE(CTYPE, H5TYPE) \
         if(H5Tequal(ntd, H5TYPE)) \
           return openChildAttribute<SimpleAttribute<vector<CTYPE> > >(name_);
-#       include "hdf5serie/knowntypes.def"
+#       include "knowntypes.def"
 #       undef FOREACHKNOWNTYPE
         throw Exception(getPath(), "unknown type of attribute");
       }
@@ -129,7 +129,7 @@ Attribute *Object::openChildAttribute(const std::string &name_, ElementType *att
 #       define FOREACHKNOWNTYPE(CTYPE, H5TYPE) \
         if(H5Tequal(ntd, H5TYPE)) \
           return openChildAttribute<SimpleAttribute<vector<vector<CTYPE> > > >(name_);
-#       include "hdf5serie/knowntypes.def"
+#       include "knowntypes.def"
 #       undef FOREACHKNOWNTYPE
         throw Exception(getPath(), "unknown type of attribute");
       }
